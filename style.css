@@ -1,48 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Squid Game: RPS x Russian Roulette</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>🦑 Squid Game: RPS × Russian Roulette</h1>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
 
-    <div class="info">
-      <p>🎯 Round: <span id="round">1</span></p>
-      <p>🔫 Bullets in Chamber: <span id="bullets">1</span></p>
-    </div>
+.container {
+  text-align: center;
+  max-width: 600px;
+}
 
-    <div class="rps">
-      <h2>Rock Paper Scissors</h2>
-      <p id="rps-result">Make your move!</p>
-      <div class="choices">
-        <button id="rock">🪨 Rock</button>
-        <button id="paper">📄 Paper</button>
-        <button id="scissors">✂️ Scissors</button>
-      </div>
-    </div>
+.choices button,
+#proceed-btn,
+#restart-btn {
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff375f;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
 
-    <button id="proceed-btn">🎲 Proceed to Russian Roulette</button>
+.choices button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
-    <div class="rr">
-      <h2>Russian Roulette</h2>
-      <div class="chamber">
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-      </div>
-      <p id="rr-result"></p>
-    </div>
+.choices button:hover,
+#proceed-btn:hover,
+#restart-btn:hover {
+  background-color: #ff5c78;
+}
 
-    <button id="restart-btn">🔁 Restart Game</button>
-  </div>
+.chamber {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 1rem auto;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.slot {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.2s ease;
+}
+
+.slot.bullet {
+  background-color: red;
+}
+
+.slot.active {
+  box-shadow: 0 0 10px 3px yellow;
+}
